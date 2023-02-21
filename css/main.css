@@ -1,0 +1,197 @@
+.header {
+    background-color: var(--clr-200);
+    color: var(--clr-800);
+    padding-block: 1em;
+    font-family: var(--ff-primary);
+    text-align: center;
+}
+
+.container {
+    display: flex;
+}
+
+/*
+    ============
+    Form Section
+    ============
+*/
+
+.container .info {
+    flex: 1;
+    padding-block: 1em;
+    padding-inline: 1em;
+    background-color: var(--clr-200);
+    border-end-start-radius: 0.5em;
+    border-end-end-radius: 0.5em;
+}
+
+.info h3 {
+    text-align: center;
+}
+
+.info .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    row-gap: 0.25em;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2em;
+}
+
+.form-control .form-color,
+.form-control .form-input,
+.info .form .btn {
+    border: none;
+    border-radius: 0.25em;
+}
+
+.form-control .form-color {
+    width: 12ch;
+    padding-block: 0.15em;
+    padding-inline: 0.45em;
+}
+
+.form-control .form-input {
+    text-align: center;
+    padding-block: 0.45em;
+}
+
+.info .form .btn {
+    margin-block: 1em;
+    padding-block: 0.75em;
+    padding-inline: 1.25em;
+    background-color: var(--clr-200);
+    border: 1px solid var(--clr-800);
+    color: var(--clr-800);
+    font-family: var(--ff-secondary);
+    cursor: pointer;
+    transition: background-color 350ms ease-in-out;
+}
+
+.info .form .btn:hover {
+    background-color: var(--clr-800);
+    font-weight: bold;
+    color: var(--clr-200);
+}
+
+.icon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 350ms ease-out;
+}
+
+.icon.fas {
+    color: #efefef;
+    text-shadow: 0 0 10px var(--clr-800);
+}
+
+/*
+    ============
+    List Section
+    ============
+*/
+
+.container .list {
+    flex: 3;
+    padding: 0.5em;
+}
+
+.toogleBtn {
+    border-radius: 0.25em;
+    margin-block: 1em;
+    padding-block: 0.75em;
+    padding-inline: 1.25em;
+    background-color: var(--clr-400);
+    border: 1px solid var(--clr-800);
+    color: var(--clr-800);
+    font-family: var(--ff-secondary);
+    cursor: pointer;
+    transition: background-color 350ms ease-out, border-color 250ms ease-out;
+}
+
+.toogleBtn:hover {
+    background-color: var(--clr-200);
+    font-weight: bold;
+    border-color: var(--clr-200);
+    color: var(--clr-800);
+}
+
+/*
+    ==================
+    Tasks List Section
+    ==================
+*/
+
+#tasks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 0.5em;
+    margin-block: 0.5em;
+}
+
+.task {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+    border: 1px solid var(--clr-800);
+    border-radius: 0.25em;
+    max-width: 600px;
+    column-gap: 0.2em;
+    cursor: cell;
+    transition: background-color 350ms ease-out, box-shadow 150ms ease-in,
+        border-color 200ms ease-in;
+}
+
+.task:hover {
+    box-shadow: 0 0 10px var(--clr-800);
+    border-color: #000;
+}
+
+.task_info {
+    flex: 1;
+}
+
+.task_info:nth-child(2) {
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid var(--clr-800);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.task_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
+    width: fit-content;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.task_actions i {
+    padding: 0.2em;
+    border-radius: 0.25em;
+    transition: background-color 350ms ease-out;
+    cursor: pointer;
+}
+
+.task_actions i:hover {
+    background-color: red;
+}
+
+@media screen and (max-width: 600px) {
+    #tasks-list {
+        grid-template-columns: 1fr;
+    }
+}

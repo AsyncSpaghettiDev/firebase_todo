@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>My Task Manager</h1>
+    </header>
+
+    <main class="container">
+        <section class="list">
+            <h3>Your current tasks</h3>
+            <div id="tasks-list">
+
+            </div>
+            <button class="toogleBtn" id="toggleForm">Show / Hide Form</button>
+        </section>
+
+        <section class="info">
+            <h3>Task Information</h3>
+
+            <!-- Form
+                Elements:
+                - Important
+                - Task Name
+                - Task Due date
+                - Task Description
+                - Task tag
+                - Task Color
+                - Task category
+
+             -->
+            <!-- 1 - add a class to the icon, and using css change the size / color of the icon -->
+            <!-- 2 - when user clicks on the icon, console log a message -->
+            <div class="form">
+                <div class="form-control">
+                    <label id for="toggleImportance">Importance: </label>
+                    <i id="toggleImportance" class="far fa-star icon"></i>
+                </div>
+                <div class="form-control">
+                    <label for="task-name">Task Name: </label>
+                    <input class="form-input" type="text" id="task-name" placeholder="Enter Task Name">
+                </div>
+                <div class="form-control">
+                    <label for="due-date">Due Date: </label>
+                    <input class="form-input" type="date" id="due-date">
+                </div>
+                <div class="form-control">
+                    <label for="description">Description: </label>
+                    <textarea class="form-input" placeholder="Enter Task Description" id="description"></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="tag">Tag: </label>
+                    <input class="form-input" type="text" id="tag" placeholder="Enter Tag">
+                </div>
+                <div class="form-control">
+                    <label for="color">Color: </label>
+                    <input class="form-color" type="color" id="color">
+                </div>
+                <div class="form-control">
+                    <label for="category">Category: </label>
+                    <select class="form-input" name="category" id="category">
+                        <option value="work">Work</option>
+                        <option value="family">Family</option>
+                        <option value="personal">Personal</option>
+                        <option value="school">School</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" id="btnSave">Add Task</button>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script src="./js/task.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
