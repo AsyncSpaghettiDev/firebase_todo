@@ -1,6 +1,7 @@
 const importantIcon = 'fas'
 const notImportantIcon = 'far'
 
+// Configuracion de Firebase
 var firebaseConfig = {
   apiKey: "AIzaSyCJbnos0dvTcvGOAObNdO8QW7mOivzz4as",
   authDomain: "fir-2-3c298.firebaseapp.com",
@@ -11,33 +12,31 @@ var firebaseConfig = {
   appId: "1:865478188475:web:35f5a6a1d174ac86c6789e",
   measurementId: "G-VQRQS2EGBV"
 }
-// Initialize Firebase
+
+// Inilizacion de Firebase
 firebase.initializeApp(firebaseConfig)
 
+// Clase Task para crear objetos
 async function saveTask () {
-  // get data
+  // Recibe los valores de los inputs
   let title = $("#task-name").val()
   let dueDate = $("#due-date").val()
   let description = $("#description").val()
   let tag = $("#tag").val()
   let color = $("#color").val()
   let category = $("#category").val()
+  // Verifica si el icono es importante o no
   let important = $("#toggleImportance").hasClass(importantIcon)
-
+  // Crea un objeto de la clase Task
   let task = new Task(title, dueDate, description, tag, color, category, important)
 
-  // Save the task in the server using Firebase
+  // Envio de datos a Firebase
   await firebase.database().ref('Tasks/' + Date.now()).update(task)
   displayTask(task)
   clearForm()
 }
 
-
-/**
- * Clear form function
- * and set date to today
- */
-
+// Clase para limpiar el formulario y poner la fecha actual
 function clearForm () {
   $("#task-name").val("")
   let today = new Date()
@@ -50,22 +49,9 @@ function clearForm () {
   $("#toggleImportance").addClass(notImportantIcon)
 }
 
-/**
- * Create a display function
- * the fn should accept a task object as a parameter
- * console log the task object
- */
-
+// Clase para desplegar las tareas en el DOM
 function displayTask (task) {
-  // create div with class="task"
-  // Separate title and description of the task in a div with a class of "task_info"
-  // Separate the due date in a div with a class of "task_info"
-  // Separate the tag and the category in a div with a class of "task_info"
-  // Set the background color of the task to the color of the task using iline css
-  // Create all this using string template
-  // Do something with isImportant wonder me copilot
-  // Add the task to the tasks-list in the DOM
-
+  // Crea un elemento div con la clase task
   let html = `
     <div class="task" style="background-color:${task.color}">
         <div class="task_info">
@@ -85,49 +71,45 @@ function displayTask (task) {
         </div>
     </div>
                 `
-
+  // Agrega el elemento div a la lista de tareas
   $("#tasks-list").append(html)
 }
 
+// Clase para ocultar el formulario
 function toggleForm () {
   console.log("Form toggled")
   $(".info").slideToggle()
 }
 
+// Clase para cambiar el icono de importante
 function toogleImportance () {
   console.log("Icon clicked")
 
   $("#toggleImportance").toggleClass(notImportantIcon).toggleClass(importantIcon)
 }
 
+// Clase para inicializar la aplicacion
 function init () {
   console.log("Task Manager")
 
-  // load prev data
+  // Lllama la funcion para obtener las tareas del servidor
   fetchTasks()
 
-  // Set initial values
+  // Valores por defecto del formulario
   $("#color").val("#9900ff")
   let today = new Date()
   $('#due-date').val(today.toISOString().substr(0, 10))
 
-  // hook events
+  // Eventos
   $("#btnSave").click(saveTask)
   $("#toggleImportance").click(toogleImportance)
   $("#toggleForm").click(toggleForm)
 }
 
+// Inicializa la aplicacion
 window.onload = init
 
-/**
- * Create a function to fetch the tasks from the server
- * send a get request to 'http://fsdiapi.azurewebsites.net/api/tasks'
- * console log the response from the server
- * 
- * 
- * 
- */
-
+// Clase para obtener las tareas del servidor
 function fetchTasks () {
   const ref = firebase.database().ref('Tasks')
   ref.on("child_added", function (snapshot) {
