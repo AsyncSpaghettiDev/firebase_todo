@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <!-- Referencias al SDK para web y la base de datos en tiempo real de Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
     <link rel="stylesheet" href="./css/index.css">
@@ -19,30 +20,22 @@
     </header>
 
     <main class="container">
+        <!-- Clase de lista de tareas -->
         <section class="list">
             <h3>Your current tasks</h3>
+            <!-- Div vacio para agregar la lista de tareas -->
             <div id="tasks-list">
-
             </div>
+            <!-- Boton para mostrar y ocultar el formulario -->
             <button class="toogleBtn" id="toggleForm">Show / Hide Form</button>
         </section>
 
         <section class="info">
             <h3>Task Information</h3>
 
-            <!-- Form
-                Elements:
-                - Important
-                - Task Name
-                - Task Due date
-                - Task Description
-                - Task tag
-                - Task Color
-                - Task category
-
-             -->
-            <!-- 1 - add a class to the icon, and using css change the size / color of the icon -->
-            <!-- 2 - when user clicks on the icon, console log a message -->
+            <!-- Formulario para agregar tareas -->
+            <!-- Elementos:
+            Importancia, fecha de entrega, decripcion, tag, color, categoria-->
             <div class="form">
                 <div class="form-control">
                     <label id for="toggleImportance">Importance: </label>
