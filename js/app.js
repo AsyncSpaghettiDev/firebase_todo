@@ -32,7 +32,7 @@ async function saveTask () {
 
   // Envio de datos a Firebase
   await firebase.database().ref('Tasks/' + Date.now()).update(task)
-  displayTask(task)
+//   displayTask(task)
   clearForm()
 }
 
